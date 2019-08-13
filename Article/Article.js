@@ -112,3 +112,68 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+let container = document.querySelector('.articles');
+
+function articleCreator(title, date, firstP, secondP, thirdP) {
+
+    //variables 
+    const articleDiv = document.createElement('div');
+    const articleTitle = document.createElement('h2');
+    const articleDate = document.createElement('p');
+    const p1 = document.createElement('p');
+    const p2 = document.createElement('p');
+    const p3 = document.createElement('p');
+    const expandButton = document.createElement('span');
+
+      //class lists
+    articleDiv.classList.add('article');
+    articleDate.classList.add('date');
+    expandButton.classList.add('expandButton');
+
+    //append
+
+    articleDiv.appendChild(articleTitle);
+    articleDiv.appendChild(articleDate);
+    articleDiv.appendChild(p1);
+    articleDiv.appendChild(p2);
+    articleDiv.appendChild(p3);
+    articleDiv.appendChild(expandButton);
+
+    //text content
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    p1.textContent = firstP;
+    p2.textContent = secondP;
+    p3.textContent = thirdP;
+    expandButton.textContent = 'Read More';
+
+  expandButton.addEventListener('click', () => articleDiv.classList.toggle('article-open'));
+
+  return articleDiv;
+
+
+}
+
+const moreData = data.map(item => {
+   return articleCreator(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+})
+
+// data.forEach(item => {
+//   container.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
+// });
+
+// const moreData = data.map((allData) => {
+//   return articleCreator(allData.title, allData.date, allData.firstParagraph)
+// })
+moreData.forEach((allData) => {
+container.appendChild(allData)
+})
+ console.log(moreData);
+
+
+// appendChild(articleCreator());
+// let firstArticle = articleCreator('created');
+// let art = articleCreator();
+// console.log(art);
+
