@@ -76,8 +76,7 @@
 .article-open {
   height: 400px;
 }
-html,
-body {
+@import '../Menu/Menu.less' html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto';

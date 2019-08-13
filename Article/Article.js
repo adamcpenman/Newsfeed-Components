@@ -177,3 +177,5 @@ container.appendChild(allData)
 // let art = articleCreator();
 // console.log(art);
 
+let newArticle = articleCreator();
+console.log(newArticle);
