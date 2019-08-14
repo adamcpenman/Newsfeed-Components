@@ -33,61 +33,41 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+//creating variables
 let menuContainer = document.querySelector('.header');
 let menuBtn = document.querySelector('.menu-button');
+let menuB = document.querySelector('body');
 
-menuContainer.appendChild(menuSelector(menuItems));
+ 
 
-function menuSelector(list){
+//creating function 
+function menuSelector(array){
 
   const menuDiv = document.createElement('div');
    menuDiv.classList.add('menu');
-  const ulList = document.createElement('ul');
-    menuDiv.appendChild(ulList)
+  const ulItems = document.createElement('ul');
+    menuDiv.appendChild(ulItems);
 
     menuItems.forEach((items) => {
       const liItems = document.createElement('li');
-      ulList.appendChild(liItems);
+      ulItems.appendChild(liItems);
       liItems.textContent = items;
       
     });
 
-    //  array.forEach((items) => {
-    //   let liItems = document.createElement('li');
-    //   ulList.appendChild(liItems);
-    //   ulItems.textContent = items;
-
-
-menuBtn.addEventListener('click', () => menuDiv.classList.toggle('menu--open'));
+menuBtn.addEventListener('click', (event) => { menuDiv.classList.toggle('menu--open')
+});
 
 
   return menuDiv;
 
 }
 
-// const moreData = data.map(item => {
-//    return articleCreator(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
-// })
-// moreData.forEach((allData) => {
-// container.appendChild(allData)
-// })
-//  console.log(moreData);
-
-// const moreMenu = menuItems.map(item => {
-//   return menuSelector();
-// })
-
-// moreMenu.forEach((allMenu) => {
-//   menuContainer.appendChild(allMenu)
-// })
+//appending header to function
+menuContainer.appendChild(menuSelector(menuItems));
 
 
-// menuContainer.appendChild(menuSelector(menuItems));
-
-// const mBtn = document.querySelector('.menu-button');
-// mBtn.addEventListener('click', () => mBtn.classList.toggle('menu--open'));
-// console.log(mBtn, "button")
-// menuDiv.addEventListener('click', () => ulList.classList.toggle('article-open'));
 
 
 
