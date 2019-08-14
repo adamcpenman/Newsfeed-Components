@@ -69,6 +69,5 @@ menuContainer.appendChild(menuSelector(menuItems));
 
 
 
-
-
 console.log(menuSelector(),'menuSelector function');
+

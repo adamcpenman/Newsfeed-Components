@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+   {
+    title: 'Professional Software Development in 2019',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,70 +128,111 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
-
+  
 let container = document.querySelector('.articles');
-
+  //Creating a function with 5 arguments
 function articleCreator(title, date, firstP, secondP, thirdP) {
 
-    //variables 
-    const articleDiv = document.createElement('div');
-    const articleTitle = document.createElement('h2');
-    const articleDate = document.createElement('p');
-    const p1 = document.createElement('p');
-    const p2 = document.createElement('p');
-    const p3 = document.createElement('p');
-    const expandButton = document.createElement('span');
 
-      //class lists
-    articleDiv.classList.add('article');
-    articleDate.classList.add('date');
-    expandButton.classList.add('expandButton');
+      //creating Elements
+  const articleDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const dateP = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const span = document.createElement('span')
 
-    //append
+  //creating class lists
+  articleDiv.classList.add('article')
+  dateP.classList.add('date');
+  span.classList.add('expandButton');
 
-    articleDiv.appendChild(articleTitle);
-    articleDiv.appendChild(articleDate);
-    articleDiv.appendChild(p1);
-    articleDiv.appendChild(p2);
-    articleDiv.appendChild(p3);
-    articleDiv.appendChild(expandButton);
+  //append
+articleDiv.appendChild(articleTitle);
+articleDiv.appendChild(dateP);
+articleDiv.appendChild(p1);
+articleDiv.appendChild(p2);
+articleDiv.appendChild(p3);
+articleDiv.appendChild(span);
 
-    //text content
-    articleTitle.textContent = title;
-    articleDate.textContent = date;
-    p1.textContent = firstP;
-    p2.textContent = secondP;
-    p3.textContent = thirdP;
-    expandButton.textContent = 'Read More';
+//grab text content
+articleTitle.textContent = title;
+dateP.textContent = date;
+p1.textContent = firstP;
+p2.textContent = secondP;
+p3.textContent = thirdP;
+span.textContent = "Read More";
 
-  expandButton.addEventListener('click', () => articleDiv.classList.toggle('article-open'));
+span.addEventListener('click', (event) => { articleDiv.classList.toggle('article-open')
+});
 
   return articleDiv;
 
-
 }
 
-const moreData = data.map(item => {
-   return articleCreator(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+const dataLoop = data.map(item => {
+  return articleCreator(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
 })
 
-// data.forEach(item => {
-//   container.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
-// });
+dataLoop.forEach((allData) => {
+container.appendChild(allData);
+})
 
-// const moreData = data.map((allData) => {
-//   return articleCreator(allData.title, allData.date, allData.firstParagraph)
+console.log(articleCreator(), 'article div');
+
+let newArticle = articleCreator('title', 'date', 'first', 'seoncd', 'third');
+container.appendChild(newArticle);
+console.log(newArticle, "new article?");
+
+// let container = document.querySelector('.articles');
+
+// function articleCreator(title, date, firstP, secondP, thirdP) {
+
+//     //variables 
+//     const articleDiv = document.createElement('div');
+//     const articleTitle = document.createElement('h2');
+//     const articleDate = document.createElement('p');
+//     const p1 = document.createElement('p');
+//     const p2 = document.createElement('p');
+//     const p3 = document.createElement('p');
+//     const expandButton = document.createElement('span');
+
+//       //class lists
+//     articleDiv.classList.add('article');
+//     articleDate.classList.add('date');
+//     expandButton.classList.add('expandButton');
+
+//     //append
+
+//     articleDiv.appendChild(articleTitle);
+//     articleDiv.appendChild(articleDate);
+//     articleDiv.appendChild(p1);
+//     articleDiv.appendChild(p2);
+//     articleDiv.appendChild(p3);
+//     articleDiv.appendChild(expandButton);
+
+//     //text content
+//     articleTitle.textContent = title;
+//     articleDate.textContent = date;
+//     p1.textContent = firstP;
+//     p2.textContent = secondP;
+//     p3.textContent = thirdP;
+//     expandButton.textContent = 'Read More';
+
+//   expandButton.addEventListener('click', () => articleDiv.classList.toggle('article-open'));
+
+//   return articleDiv;
+// }
+// const moreData = data.map(item => {
+//    return articleCreator(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
 // })
-moreData.forEach((allData) => {
-container.appendChild(allData)
-})
- console.log(moreData);
+// moreData.forEach((allData) => {
+// container.appendChild(allData)
+// })
+//  console.log(moreData);
 
 
-// appendChild(articleCreator());
-// let firstArticle = articleCreator('created');
-// let art = articleCreator();
-// console.log(art);
+// let newArticle = articleCreator('title', 'date', 'first', 'seoncd', 'third');
+// console.log(newArticle, "new article?");
 
-let newArticle = articleCreator();
-console.log(newArticle);
