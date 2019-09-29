@@ -33,3 +33,83 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+//Creating variables
+
+const menuHeader = document.querySelector('.header');
+const menuBtn = document.querySelector('.menu-button')
+const menuBody = document.querySelector('body');
+
+menuHeader.appendChild(menuSelector(menuItems));
+
+//Creating a function
+function menuSelector() {
+
+  //creating elements in function
+const menuDiv = document.createElement('div');
+const menuUl = document.createElement('ul');
+//creating classes
+menuDiv.classList.add('menu')
+//appending 
+menuDiv.appendChild(menuUl);
+
+//looping for the data in menuItems
+menuItems.forEach((items) => {
+  const menuLi = document.createElement('li');
+  menuUl.appendChild(menuLi);
+  menuLi.textContent = items;
+  menuLi.addEventListener('mouseover', (event) => {
+    event.currentTarget.style.cursor = "pointer";
+    })
+  menuLi.addEventListener('click', (event) => {
+    event.currentTarget.style.color = 'red';
+  })
+});
+
+menuBtn.addEventListener('click', (event) => {
+  menuDiv.classList.toggle('menu--open');
+})
+
+
+
+return menuDiv
+}
+
+console.log(menuSelector());
+//creating variables
+// let menuContainer = document.querySelector('.header');
+// let menuBtn = document.querySelector('.menu-button');
+// let menuB = document.querySelector('body');
+
+ 
+
+// //creating function 
+// function menuSelector(array){
+
+//   const menuDiv = document.createElement('div');
+//    menuDiv.classList.add('menu');
+//   const ulItems = document.createElement('ul');
+//     menuDiv.appendChild(ulItems);
+
+//     menuItems.forEach((items) => {
+//       const liItems = document.createElement('li');
+//       ulItems.appendChild(liItems);
+//       liItems.textContent = items;
+      
+//     });
+
+// menuBtn.addEventListener('click', (event) => { menuDiv.classList.toggle('menu--open')
+// });
+
+
+//   return menuDiv;
+
+// }
+
+// //appending header to function
+// menuContainer.appendChild(menuSelector(menuItems));
+
+
+
+// console.log(menuSelector(),'menuSelector function');
+
